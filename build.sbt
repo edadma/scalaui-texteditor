@@ -1,10 +1,14 @@
 name := "scalaui text editor"
 
-scalaVersion := "2.11.12"
+scalaVersion := "2.13.6"
 
 enablePlugins(ScalaNativePlugin)
 
-libraryDependencies += "it.lolgab" %%% "scalaui" % "0.0.1"
-libraryDependencies += "com.outr" %%% "reactify" % "3.0.3"
+nativeLinkingOptions := Seq(
+  s"-L${baseDirectory.value}/native-lib"
+)
 
-nativeMode := "release"
+libraryDependencies += "it.lolgab" %%% "scalaui" % "0.0.2"
+libraryDependencies += "com.outr" %%% "reactify" % "4.0.7"
+
+//nativeMode := "release" //had to comment this out to keep it from hanging during build
